@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.chat_app.ChatApp.Companion.sharedPreferences
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -29,6 +30,22 @@ class UsernameViewModel @Inject constructor(): ViewModel() {
             if (usernameText.value.isNotBlank()) {
                 _onJoinChat.emit(usernameText.value)
             }
+            saveUsername()
         }
     }
+
+    fun checkLastUsername(){
+        val username = sharedPreferences.getString("username","")
+        if (username != null) {
+            _usernameText.value = username
+        }
+    }
+
+    private fun saveUsername(){
+        sharedPreferences.edit().apply{
+            putString("username",_usernameText.value)
+            apply()
+        }
+    }
+
 }
