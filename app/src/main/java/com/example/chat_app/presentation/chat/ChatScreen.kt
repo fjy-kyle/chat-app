@@ -1,6 +1,5 @@
 package com.example.chat_app.presentation.chat
 
-import android.graphics.Paint.Align
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -28,10 +27,8 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
-import androidx.room.RoomWarnings
 import com.example.chat_app.R
 import com.example.chat_app.domain.model.Message
-import io.ktor.utils.io.*
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -95,7 +92,7 @@ fun MessageItem(isOwnMessage: Boolean, message: Message) {
             ConstraintLayout {
                 val (avatar, messageText) = createRefs()
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    painter = painterResource(id = R.drawable.universal_avatar),
                     contentDescription = "头像",
                     modifier = Modifier
                         .size(40.dp)

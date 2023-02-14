@@ -15,6 +15,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.LifecycleOwner
+import coil.compose.AsyncImage
 import kotlinx.coroutines.flow.collectLatest
 
 @Composable
@@ -52,6 +53,7 @@ fun UsernameScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.End
         ) {
+
             TextField(
                 value = viewModel.usernameText.value,
                 onValueChange = viewModel::onUsernameChange,

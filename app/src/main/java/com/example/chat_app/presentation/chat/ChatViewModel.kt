@@ -38,8 +38,7 @@ class ChatViewModel @Inject constructor(
         savedStateHandle.get<String>("username")?.let { username ->
             Log.d("ChatViewModel",username)
             viewModelScope.launch {
-                val result = chatSocketService.initSession(username)
-                when(result) {
+                when(val result = chatSocketService.initSession(username)) {
                     is Resource.Success -> {
                         chatSocketService.observeMessage()
                             .onEach { message ->
